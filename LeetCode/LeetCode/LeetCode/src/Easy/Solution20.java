@@ -12,7 +12,7 @@ import java.util.Stack;
  * @Description Given a string containing just the characters'(', ')', '{', '}', '['
  * and ']', determine if the input string is valid.
  */
-public class Solution20 {
+public class  Solution20 {
     public boolean isValid(String s) {
         Map<Character, Character> bracketMap = new HashMap<Character, Character>();
         bracketMap.put(')', '(');
