@@ -37,4 +37,9 @@ class Solution200 {
 
         return num_islands;
     }
+
+    public int numIslands2(char[][] grid){
+        int result = 0;
+        return result;
+    }
 }
