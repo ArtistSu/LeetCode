@@ -34,9 +34,6 @@ class Solution {
         return num_islands;
     }
     public static void main(String[] args) {
-        char[][] a = {{'1','1','0','0','0'},{'1','1','0','0','0'},{'0','0','1','0','0'},{'0','0','0','1','1'}};
-        Solution is = new Solution();
-        int num = is.numIslands(a);
-        System.out.println("The number of islands is "+num);
+        System.out.println(b'\xe6\x88\x91\xe7\x88\xb1\xe4\xbd\xa0'.decode('utf-8'));
     }
 }
