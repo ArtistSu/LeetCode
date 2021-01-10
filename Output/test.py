@@ -1,7 +1,3 @@
 
 
-def learn():
-    print("Good good study day day up")
-
-while True:
-    learn();
+print(b'\xe6\x88\x91\xe7\x88\xb1\xe4\xbd\xa0'.decode('utf-8'))
