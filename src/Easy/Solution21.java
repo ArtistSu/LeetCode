@@ -1,11 +1,12 @@
+package Easy;
 
 /**
- * @author SuJiexi
+ * Title:
+ *
+ * @author suyuelai
  * @version V1.0
- * @Package Easy
- * @date 2019-05-10 16:40
- * @Description Merge two sorted linked lists and return it as a new list. The new
- * list should be made by splicing together the nodes of the first two lists.
+ * @date 2021/1/13 9:09 下午
+ * Description:
  */
 public class Solution21 {
     ListNode result = new ListNode(0);
@@ -19,14 +20,5 @@ public class Solution21 {
         }
         l1.next = mergeTwoLists(l1.next, l2);
         return l1;
-    }
-}
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
     }
 }
