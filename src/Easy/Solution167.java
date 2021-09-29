@@ -34,7 +34,7 @@ public class Solution167 {
         return null;
     }
 
-    public int[] twoSum2(int[] numbers, int target) {
+    public int[] twoSum2 (int[] numbers, int target) {
         int i = 0, j = numbers.length - 1;
         while (i < j) {
             int m = (i + j) >>> 1;
