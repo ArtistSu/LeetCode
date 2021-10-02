@@ -1,6 +1,6 @@
 package java;
 
-public class java485 {
+public class Java485 {
         int[] nums = new int[6];
 
         public int findMaxConsecutiveOnes(int[] nums){
