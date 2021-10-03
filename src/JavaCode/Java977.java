@@ -17,4 +17,22 @@ public class Java977 {
         }
         return nums;
     }
+
+    // two pointer / two array  Time Complexity: O(N) Space Complexity: O(N)
+    public int[] sortedSquares2(int[] nums) {
+        int leftPoint = 0;
+        int rightPoint = nums.length - 1;
+        int[] resultArr = new int[nums.length];
+
+        for (int i = resultArr.length - 1; i >= 0; i--) {
+            if (Math.abs(nums[leftPoint]) > Math.abs(nums[rightPoint])) {
+                resultArr[i] = nums[leftPoint] * nums[leftPoint];
+                leftPoint++;
+            } else {
+                resultArr[i] = nums[rightPoint] * nums[rightPoint];
+                rightPoint--;
+            }
+        }
+        return resultArr;
+    }
 }
