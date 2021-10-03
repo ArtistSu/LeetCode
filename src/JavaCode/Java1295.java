@@ -1,4 +1,4 @@
-package java;
+package JavaCode;
 
 public class Java1295 {
     public int findNumbers(int[] nums) {

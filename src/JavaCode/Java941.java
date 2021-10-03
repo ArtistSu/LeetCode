@@ -1,4 +1,4 @@
-package java;
+package JavaCode;
 
 public class Java941 {
     public boolean validMountainArray(int[] arr) {

@@ -1,4 +1,4 @@
-package java;
+package JavaCode;
 
 public class Java26 {
     public int removeDuplicates(int[] nums) {

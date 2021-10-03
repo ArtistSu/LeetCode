@@ -1,4 +1,4 @@
-package java;
+package JavaCode;
 
 public class Java1299 {
     public int[] replaceElements(int[] arr) {

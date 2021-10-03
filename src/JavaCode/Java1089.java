@@ -1,4 +1,4 @@
-package java;
+package JavaCode;
 
 public class Java1089 {
     public void duplicateZeros(int[] arr) {

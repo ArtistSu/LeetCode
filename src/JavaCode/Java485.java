@@ -1,4 +1,4 @@
-package java;
+package JavaCode;
 
 public class Java485 {
         int[] nums = new int[6];

@@ -1,4 +1,4 @@
-package java;
+package JavaCode;
 
 public class Java977 {
     public int[] sortedSquares(int[] nums) {
