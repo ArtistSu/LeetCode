@@ -4,9 +4,17 @@ import java.util.Collections;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-class Solution {
+public class Solution {
 
+    public static void main(String[] args) {
+        BankAccount ba;
+    }
+}
 
+class BankAccount{
+    public BankAccount(){
+
+    }
 }
 
 
