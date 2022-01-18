@@ -73,4 +73,30 @@ public class Java144 {
         return resultList;
     }
 
+    public List<Integer> preorderTraversalEx(TreeNode root) {
+        Stack<TreeNode> st = new Stack<>();
+        List<Integer> resultList = new ArrayList<>();
+
+            if (root == null) {
+                return resultList;
+            }
+
+            st.push(root);
+
+            while (!st.isEmpty()) {
+                TreeNode tempNode = st.pop();
+                resultList.add(tempNode.val);
+
+                if (tempNode.right != null) {
+                    st.push(tempNode.right);
+                }
+                if (tempNode.left != null) {
+                    st.push(tempNode.left);
+                }
+            }
+            return resultList;
+        }
+
+
+
 }
