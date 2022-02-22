@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE List [
+        <!ELEMENT List (Student*,Assessment,Module)>
+        <!ELEMENT Student (Submission*)>
+        <!ATTLIST Student
+                name CDATA #REQUIRED
+                sid CDATA #REQUIRED
+                >
+
+        <!ELEMENT Submission EMPTY>
+        <!ATTLIST Submission
+                subNr CDATA #REQUIRED
+                url CDATA #REQUIRED
+                forAssessment IDREF #REQUIRED
+                >
+
+        <!ELEMENT Assessment EMPTY>
+        <!ELEMENT date (#PCDATA)>
+        <!ELEMENT title (#PCDATA)>
+        <!ATTLIST Assessment
+                date CDATA #REQUIRED
+                title CDATA #REQUIRED
+                id ID #REQUIRED
+                hasAssessment IDREF #REQUIRED
+                >
+
+        <!ELEMENT Module EMPTY>
+        <!ATTLIST Module
+                id ID #REQUIRED
+                code CDATA #REQUIRED
+                term CDATA #REQUIRED
+                >
+        ]>
+<List>
+    <Student name="Otto" sid="0110">
+        <Submission subNr="2" url="www.fileservice.com/Allen-01210-CW1-2" forAssessment="Q1"/>
+    </Student>
+
+    <Student name="Ottooooo" sid="01210">
+        <Submission subNr="3" url="www.fileservice.com/Allen-01210-CW1-2" forAssessment="Q1"/>
+    </Student>
+
+    <Assessment id="Q1" date="not-a-date" title="a title" hasAssessment="SOA"/>
+    <Module id="SOA" code="CO7214" term="semester2"/>
+</List>
