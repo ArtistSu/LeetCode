@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/CW1.schema.json",
+  "title": "TaskBHierarchy",
+  "description": "A hierarchical mapping",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "sid": {
+      "type": "string"
+    },
+    "isEnrolledOn": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "term": {
+            "type": "string"
+          },
+          "hasAssessment": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "forAssessment": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "subNr": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    },"required":["subNr","url"]
+                  }
+                }
+              },"required":["date","title"]
+            }
+          }
+        },"required":["code","term","hasAssessment"]
+      }
+    }
+  },"required":["name","sid","isEnrolledOn"]
+}

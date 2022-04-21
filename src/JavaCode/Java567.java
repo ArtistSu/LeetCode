@@ -25,5 +25,6 @@ public class Java567 {
             ++arr1[s1.charAt(i)-'a'];
             ++arr2[s2.charAt(i)-'a'];
         }
+        return true;
     }
 }

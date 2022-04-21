@@ -1,47 +1,34 @@
 package JavaCode;
 
 public class Java21 {
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * @topic Merge Two Sorted Lists
+     * @author ArtistS
+     * @param l1
+     * @param l2
+     * @return
+     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode originalHead = null;
-        ListNode operateNode = null;
-        // Check for edge cases
-        if (l1 == null || l2 == null) {
-            if (l1 == null && l2 == null) {
-                return null;
-            }
-            return l1 == null ? l2 : l1;
-        }
-
-        while (l1 != null && l2 != null) {
-
-            if (l1.val <= l2.val) {
-                if (operateNode == null) {
-                    operateNode = l1;
-                    originalHead = operateNode;
-                    l1 = l1.next;
-                } else {
-                    operateNode.next = l1;
-                    operateNode = operateNode.next;
-                    l1 = l1.next;
-                }
-            } else {
-                if (operateNode == null) {
-                    operateNode = l2;
-                    originalHead = operateNode;
-                    l2 = l2.next;
-                } else {
-                    operateNode.next = l2;
-                    operateNode = operateNode.next;
-                    l2 = l2.next;
-                }
+        ListNode point1=l1;
+        ListNode point2=l2;
+        ListNode ln = new ListNode(0);
+        ListNode currNode = ln;
+        while(point2 != null){
+            if(point1 != null && point1.val<=point2.val){
+                currNode.next = point1;
+                currNode = point1;
+                point1 = point1.next;
+            }else{
+                currNode.next = point2;
+                currNode = point2;
+                point2 = point2.next;
             }
         }
-        if (l1 != null) {
-            operateNode.next = l1;
-        } else {
-            operateNode.next = l2;
-        }
-        return originalHead;
+        currNode.next = point1;
+
+        return ln.next;
     }
 
     // Time Complexity: O(m + n)  Space Complexity: O(1)

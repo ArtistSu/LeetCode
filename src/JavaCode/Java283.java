@@ -2,22 +2,23 @@ package JavaCode;
 
 public class Java283 {
     /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * @topic: Move Zeros
+     * @author: ArtistS
      * @param nums
-     * @title : Move Zeroes
-     * Traversal
-     * @Time Complexity : O(n)
-     * @Space Complexity : 0(1)
      */
     public void moveZeroes3(int[] nums) {
         int start = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != 0) {
-                nums[start] = nums[i];
-                if (i != start) {
-                    nums[i] = 0;
+        for(int i=0;i< nums.length;i++){
+            if(nums[i]!=0){
+                nums[start]=nums[i];
+                if(start != i){
+                    nums[i]=0;
                 }
                 start++;
             }
+
         }
     }
 

@@ -5,31 +5,28 @@ import java.util.Map;
 
 public class Java141 {
 
+    /**
+     * Time Complexity : O(n)
+     * Space Complexity : O(1)
+     * @topic Linked List Cycle
+     * @author ArtistS
+     * @param head
+     * @return
+     */
     public boolean hasCycle(ListNode head) {
-
-        // Record the position of cycleNode
-        int position = 0;
-        // Check for edge cases i.e only have 1 node
-        if (head == null || head.next == null) {
+        if(head == null){
             return false;
         }
-
-        // Iterate over the list and put the node into a map
-        Map<ListNode, Integer> map = new HashMap();
-
-        while (head.next != null) {
-            position++;
-
-            if (map.containsKey(head.next)) {
+        ListNode slowPtr = head;
+        ListNode fastPtr = head;
+        while(fastPtr.next != null && fastPtr.next.next != null){
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+            if(slowPtr == fastPtr){
                 return true;
-            } else {
-                map.put(head.next, position);
-                head = head.next;
             }
         }
-
         return false;
-
     }
 }
 

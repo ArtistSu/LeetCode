@@ -1,34 +1,39 @@
 package JavaCode;
 
-public class Java142 {
-    public ListNode detectCycle(ListNode head) {
-        ListNode temp = head;
-        ListNode fast = head;
-        ListNode slow = head;
+import java.util.HashSet;
+import java.util.Set;
 
-        if(head == null){
+public class Java142 {
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * @topic Linked List Cycle II
+     * @author ArtistS
+     * @param head
+     * @return
+     */
+    public ListNode detectCycle(ListNode head) {
+        Set set = new HashSet<>();
+        if(head == null || head.next == null){
             return null;
         }
-
-        // Whether there is a cycle
-        while(fast != null){
-            slow = slow.next;
-
-            if(fast.next != null){
-                fast = fast.next.next;
-            }else{
-                return null;
-            }
-
-            if(fast==slow){
-                while(temp != slow){
-                    temp = temp.next;
-                    slow = slow.next;
+        ListNode slowPtr = head;
+        ListNode fastPtr = head;
+        ListNode resPtr = head;
+        int times = 0;
+        while(fastPtr.next != null && fastPtr.next.next != null && times <= 50001){
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+            if(slowPtr == fastPtr){
+                while(resPtr != fastPtr){
+                    resPtr = resPtr.next;
+                    fastPtr = fastPtr.next;
                 }
-                return temp;
+                return fastPtr;
             }
+            times+=1;
         }
         return null;
-
     }
 }
+

@@ -53,7 +53,7 @@ public class BadPairs {
                 nums[k] = temp[i];
                 i++;
             } else if (temp[i] <= temp[j]+2) {
-                // 注意：这里是 <= ，写成 < 就不对，请思考原因
+
                 nums[k] = temp[i];
                 i++;
             } else {
