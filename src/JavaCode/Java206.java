@@ -1,28 +1,50 @@
 package JavaCode;
 
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+
+
 public class Java206 {
-    public ListNode reverseList(ListNode head) {
-        ListNode nsTemp = head;
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * @method iteration
+     * @topic Reverse Linked List
+     * @author ArtistS
+     * @param head
+     * @return
+     */
+    public ListNode reverseList2(ListNode head) {
+        ListNode preNode = null;
         ListNode currNode = head;
-
-        // Check for the edge cases
-        // The head is null
-        if(head == null){
-            return null;
+        while(currNode != null){
+            ListNode next = currNode.next;
+            currNode.next = preNode;
+            preNode = currNode;
+            currNode = next;
         }
+        return preNode;
+    }
 
-        // Only one element
-        if(head.next == null){
+    /**
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * @method recursion
+     * @topic Reverse Linked List
+     * @author ArtistS
+     * @param head
+     * @return
+     */
+    public ListNode reverseList(ListNode head) {
+        if(head == null || head.next == null){
             return head;
         }
-
-        while(currNode.next != null){
-            nsTemp = head;
-            head = currNode.next;
-            currNode.next = currNode.next.next;
-            head.next = nsTemp;
-        }
-        return head;
-
+        ListNode newHead = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
     }
 }
