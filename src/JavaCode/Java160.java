@@ -2,8 +2,9 @@ package JavaCode;
 
 public class Java160 {
     /**
-     * Time Complexity: O(m+n)
+     * Time Complexity: O(m+n) {@code m} is the length of {@param headA}, {@code n} is the length of {@param headB}
      * Space Complexity: O(1)
+     * @method Two Pointers
      * @topic Intersection of Two Linked List
      * @author ArtistS
      * @param headA
