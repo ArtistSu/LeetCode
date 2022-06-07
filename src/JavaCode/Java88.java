@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Java88 {
     /**
-     * Time Complexity: O(n)
+     * Time Complexity: O(m+n) {@param m} {@param n}
      * Space Complexity: O(1)
      * @topic: Merged Sorted Array
      * @author: ArtistS
@@ -14,13 +14,20 @@ public class Java88 {
      * @param n
      */
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int i = nums1.length - 1, j = m -1, k = n - 1;
-        while(k >= 0){
-            if(j>=0 && nums1[j]>=nums2[k]){
-                nums1[i--]=nums1[j--];
+        int ptrA = m-1, ptrB = n-1;
+        int tail = m+n-1;
+        int curr;
+        while(ptrA >= 0 || ptrB >= 0){
+            if(ptrA == -1){
+                curr = nums2[ptrB--];
+            }else if(ptrB == -1){
+                curr = nums1[ptrA--];
+            }else if(nums1[ptrA] >= nums2[ptrB]){
+                curr = nums1[ptrA--];
             }else{
-                nums1[i--]=nums2[k--];
+                curr = nums2[ptrB--];
             }
+            nums1[tail--] = curr;
         }
     }
 
