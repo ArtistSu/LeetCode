@@ -1,11 +1,52 @@
 package JavaCode;
 
 public class Java167 {
+
     /**
-     * Two pointers
-     * Time Conplexity : O(n)
+     * Time Complexity : O(n) {@code n} is the length of {@param numbers}
      * Space Complexity : O(1)
-     *
+     * @method Binary Search
+     * @topic Two Sum II - Input Array Is Sorted
+     * @author ArtistS
+     * @param numbers
+     * @param target
+     * @return
+     */
+    public int[] twoSum3(int[] numbers, int target) {
+        int[] res = new int[]{-1,-1};
+        for(int i = 0; i < numbers.length; i++){
+            int sub = target - numbers[i];
+            int index2 = binarySearch(numbers, sub, i+1);
+            if(index2 != -1 && index2 != i){
+                res[0] = i + 1;
+                res[1] = index2 + 1;
+                return res;
+            }
+        }
+        return res;
+    }
+
+    public int binarySearch(int[] numbers, int sub, int start){
+        int left = start, right = numbers.length-1;
+        while(left <= right){
+            int mid = left + (right - left)/2;
+            if(numbers[mid] == sub){
+                return mid;
+            }
+            if(numbers[mid] < sub){
+                left = mid + 1;
+            }else{
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+    /**
+     * Time Complexity : O(n) {@code n} is the length of {@param numbers}
+     * Space Complexity : O(1)
+     * @method Two Pointers
+     * @topic Two Sum II - Input Array Is Sorted
+     * @author ArtistS
      * @param numbers
      * @param target
      * @return
