@@ -1,25 +1,26 @@
 package JavaCode;
 
-public class Java1051 {
-    public int heightChecker(int[] heights) {
-        int resultNumber = 0;
-        int[] arryCopy = heights.clone();
+import java.util.Arrays;
 
-        // sort the arrCopy
-        for (int i = 1; i < arryCopy.length; i++) {
-            for (int j = 0; j < arryCopy.length - i;j++) {
-                if(arryCopy[j] > arryCopy[j + 1]){
-                    int temp = arryCopy[j];
-                    arryCopy[j] = arryCopy[j + 1];
-                    arryCopy[j + 1] = temp;
-                }
+public class Java1051 {
+    /**
+     * Time Complexity: O(logn)+O(n) {@code n} is the length of{@params heights}
+     * Space Complexity: O(n)
+     * @method QuickSort
+     * @topic Height Checker
+     * @author ArtistS
+     * @param heights
+     * @return
+     */
+    public int heightChecker(int[] heights) {
+        int[] heights_order = heights.clone();
+        Arrays.sort(heights_order);
+        int res = 0;
+        for(int i = 0; i < heights.length;i++){
+            if(heights[i] != heights_order[i]){
+                res+=1;
             }
         }
-        for (int i = 0; i < heights.length; i++) {
-            if(heights[i] != arryCopy[i]){
-                resultNumber++;
-            }
-        }
-        return resultNumber;
+        return res;
     }
 }
