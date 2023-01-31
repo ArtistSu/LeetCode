@@ -1,7 +1,7 @@
 package JavaCode;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Java2006 {
     /**
@@ -40,5 +40,63 @@ public class Java2006 {
             cnt.put(nums[i],cnt.getOrDefault(nums[i],0)+1);
         }
         return res;
+    }
+
+    public static List<Integer> cardinalitySort(List<Integer> nums) {
+
+        int[] arr = new int[nums.size()];
+
+        // 1. Get the number of 1
+        for(int i = 0; i < arr.length; i++){
+            int count = 0;
+            int num = nums.get(i);
+            while(num != 0){
+                if((num&1) == 1){
+                    count++;
+                }
+                num = num >> 1;
+            }
+            arr[i] = count;
+        }
+
+        // 2. Combine array
+        int[][] sorted = new int[arr.length][2];
+
+        for(int i = 0; i < arr.length; i++){
+            sorted[i][0] = arr[i];
+            sorted[i][1] = nums.get(i);
+        }
+
+        Arrays.sort(sorted, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0]-o2[0];
+            }
+        });
+
+        // 3. Output
+        List<Integer> res = new ArrayList<>();
+        for(int i = 0; i < arr.length; i++){
+            res.add(sorted[i][1]);
+        }
+
+        for (int n :
+                res) {
+            System.out.println(n);
+        }
+
+        return res;
+    }
+
+
+
+    public static void main(String[] args) {
+        List<Integer> arr = new ArrayList<>();
+        arr.add(31);
+        arr.add(8);
+        arr.add(7);
+        arr.add(3);
+        arr.add(2);
+        Java2006.cardinalitySort(arr);
     }
  }

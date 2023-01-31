@@ -1,11 +1,13 @@
 package JavaCode;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Java1302 {
+
     /**
-     * Time Complexity: O(n)
+     * Time Complexity: O(n) {@param n} is the number of nodes in {@params root}
      * Space Complexity: O(n)
      * @topic Deepest Leaves Sum
      * @author ArtistS

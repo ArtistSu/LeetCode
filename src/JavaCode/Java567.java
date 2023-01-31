@@ -1,30 +1,41 @@
 package JavaCode;
 
+import java.util.Arrays;
+
 public class Java567 {
     /**
-     * Sliding window
-     * Time Complexuty :
-     * Space Complexity :
+     * Time Complexity: O(n) {@param n} is the length of {@param s2}
+     * Space Complexity: O(1)
+     * @topic Permutation in String
+     * @author ArtistS
+     * @method Sliding Window
      * @param s1
      * @param s2
      * @return
-     * @author: Allen Su
      */
     public boolean checkInclusion(String s1, String s2) {
-        int n1 = s1.length();
-        int n2 = s2.length();
-
-        if(n1 > n2){
+        // Edge Case
+        if (s1.length() > s2.length()) {
             return false;
         }
 
-        int[] arr1 = new int[26];
-        int[] arr2 = new int[26];
-
-        for (int i = 0; i < n1; i++) {
-            ++arr1[s1.charAt(i)-'a'];
-            ++arr2[s2.charAt(i)-'a'];
+        int[] lettersA = new int[26];
+        int[] lettersB = new int[26];
+        for(int i = 0; i < s1.length(); i++){
+            lettersA[s1.charAt(i) - 'a']++;
+            lettersB[s2.charAt(i) - 'a']++;
         }
-        return true;
+        if(Arrays.equals(lettersA, lettersB)){
+            return true;
+        }
+
+        for(int i = s1.length(); i < s2.length(); i++){
+            lettersB[s2.charAt(i) - 'a']++;
+            lettersB[s2.charAt(i - s1.length()) - 'a']--;
+            if(Arrays.equals(lettersA, lettersB)){
+                return true;
+            }
+        }
+        return false;
     }
 }

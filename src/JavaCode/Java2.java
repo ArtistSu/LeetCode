@@ -1,6 +1,33 @@
 package JavaCode;
 
 public class Java2 {
+    /**
+     * Time Complexity: O(n) {@param n} is the total number in {@param l1} and {@param l2}
+     * Space Complexity: O(n)
+     * @topic Add Two Numbers
+     * @author ArtistS
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode headNode = new ListNode(0);
+        ListNode currNode = headNode;
+        int add = 0;
+        while(l1 != null || l2 != null || add != 0){
+            int x = l1 != null ? l1.val : 0;
+            int y = l2 != null ? l2.val : 0;
+            int sum = x + y + add;
+
+            currNode.next = new ListNode(sum%10);
+            currNode = currNode.next;
+            add = sum/10;
+
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null :l2.next;
+        }
+        return headNode.next;
+    }
 
     // Time Complexity: O(m+n)  Space Complexity: O(max(m,n) + x)
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

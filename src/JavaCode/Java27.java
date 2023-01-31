@@ -2,6 +2,29 @@ package JavaCode;
 
 public class Java27 {
     /**
+     * Time Complexity: O(n) {@param n} is the length of {@param nums}
+     * Space Complexity:O(1)
+     * @topic Remove Element
+     * @author ArtistS
+     * @method Two Pointers
+     * @param nums
+     * @param val
+     * @return
+     */
+    public int removeElement4(int[] nums, int val) {
+        int pointA = 0, pointB = nums.length;
+        while(pointA < pointB){
+            if(nums[pointA] == val){
+                nums[pointA] = nums[pointB-1];
+                pointB--;
+            }else{
+                pointA++;
+            }
+        }
+        return pointA;
+    }
+
+    /**
      * Title: Remove Element
      * Two Pointers
      * Time Complexity: O(n)

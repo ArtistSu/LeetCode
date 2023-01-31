@@ -1,6 +1,7 @@
 package JavaCode;
 
 public class Java21 {
+
     /**
      * Time Complexity: O(n)
      * Space Complexity: O(1)

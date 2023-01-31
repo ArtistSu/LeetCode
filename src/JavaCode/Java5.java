@@ -1,6 +1,9 @@
 package JavaCode;
 
+import java.util.Stack;
+
 public class Java5 {
+
     /**
      * Time Complexity: O(n^2) {@code n} is the length of {@param s}
      * Space Complexity: O(1)
@@ -24,6 +27,7 @@ public class Java5 {
             if (maxLen > end - start) {
                 start = i - (maxLen - 1) / 2;
                 end = i + maxLen / 2;
+                System.out.println(start + " " + end);
             }
         }
         return s.substring(start, end + 1);

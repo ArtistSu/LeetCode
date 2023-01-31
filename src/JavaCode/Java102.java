@@ -24,7 +24,7 @@ public class Java102 {
 
     // Time complexity: O(1) Space Complexity: O(n)
     public List<List<Integer>> levelOrder(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<>();
+        Deque<TreeNode> queue = new LinkedList<>();
         // Result
         List<List<Integer>> resultList = new ArrayList<>();
 

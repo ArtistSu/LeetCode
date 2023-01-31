@@ -5,6 +5,32 @@ import java.util.Set;
 
 public class Java3 {
     /**
+     * Time Complexity: O(n) {@code n} is the length of {@param s}
+     * Space Complexity: O(n)
+     * @topic Longest Substring Without Repeating Characters
+     * @author ArtistS
+     * @method two pointers
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring2(String s) {
+        Set<Character> set = new HashSet<>();
+        char[] chars = s.toCharArray();
+
+        int res = 0, start = 0, end = 0;
+        while (end < chars.length) {
+            if (set.contains(chars[end]) && start < end) {
+                set.remove(chars[start]);
+                start++;
+            } else {
+                set.add(chars[end]);
+                res = Math.max(res, end - start + 1);
+                end++;
+            }
+        }
+        return res;
+    }
+    /**
      * Time Complexity: O(n) {@code n} is the length of {@param s} * 2
      * Space Complexity: O(n)
      * @method two pointers

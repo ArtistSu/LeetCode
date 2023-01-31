@@ -5,6 +5,45 @@ import java.util.Set;
 
 public class Java142 {
     /**
+     * Time Complexity: O(n) {@param n} is the number of nodes in {@param head}
+     * Space Complexity: O(1)
+     * @topic Linked List Cycle II
+     * @author ArtistS
+     * @method Fast and Slow pointers
+     * @param head
+     * @return
+     */
+    public ListNode detectCycle2(ListNode head) {
+        // Edge Case
+        if(head == null){
+            return null;
+        }
+
+        // Find the meeting point
+        ListNode slow = head, fast = head;
+        while(fast != null){
+            slow = slow.next;
+            if(fast.next != null){
+                fast = fast.next.next;
+            }else{
+                fast = null;
+            }
+
+            if(fast == null){
+                return null;
+            }
+            if(fast == slow){
+                break;
+            }
+        }
+        ListNode newNode = head;
+        while(newNode != slow){
+            newNode=newNode.next;
+            slow=slow.next;
+        }
+        return newNode;
+    }
+    /**
      * Time Complexity: O(n)
      * Space Complexity: O(1)
      * @topic Linked List Cycle II

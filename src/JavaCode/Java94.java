@@ -10,7 +10,7 @@ public class Java94 {
  */
 
     /**
-     * Time Complexity: O(n)
+     * Time Complexity: O(n) {{@param n}} is the number of nodes in {@param root}
      * Space Complexity: O(n)
      * @method recursion
      * @topic Binary Tree Inorder Traversal

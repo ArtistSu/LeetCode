@@ -8,6 +8,16 @@ public class Java106 {
     int[] inorder;
     Map<Integer, Integer> idx_map = new HashMap<Integer, Integer>();
 
+    /**
+     * Time Complexity: O(n) {@param n} is the length of {@param inorder}
+     * Space Complexity: O(n)
+     * @topic Construct Binary Tree from Inorder and Postorder Traversal
+     * @author ArtistS
+     * @method Recursion
+     * @param inLeft
+     * @param inRight
+     * @return
+     */
     public TreeNode helper(int inLeft, int inRight){
         if(inLeft > inRight){
             return null;
@@ -40,7 +50,5 @@ public class Java106 {
 
 
 
-    public static void main(String[] args) {
 
-    }
 }
