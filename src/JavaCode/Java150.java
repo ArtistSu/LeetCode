@@ -2,7 +2,6 @@ package JavaCode;
 
 import java.util.Stack;
 
-import static jdk.nashorn.internal.runtime.JSType.isNumber;
 
 public class Java150 {
     /**
