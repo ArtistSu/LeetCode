@@ -1,10 +1,10 @@
-package java;
+package JavaCook;
 
 /**
  * @author ArtistS
  * Time complexity: O(m * n) m is the strs[0] length, n is strs length
  * Space complexity:O(1)
- * @tag
+ * @tag prefix
  * @prb https://leetcode.com/problems/longest-common-prefix/description/
  */
 public class Java_14 {

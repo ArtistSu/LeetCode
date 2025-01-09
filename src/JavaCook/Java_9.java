@@ -1,4 +1,4 @@
-package java;
+package JavaCook;
 
 /**
  * @author ArtistS

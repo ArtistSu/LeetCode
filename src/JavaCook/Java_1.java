@@ -1,4 +1,4 @@
-package java;
+package JavaCook;
 
 import java.util.Arrays;
 import java.util.HashMap;

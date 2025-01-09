@@ -1,4 +1,4 @@
-package java;
+package JavaCook;
 
 /**
  * @author ArtistS
@@ -9,15 +9,16 @@ package java;
  */
 public class Java_9_2 {
     public boolean isPalindrome(int x) {
-        if (x < 0 || x % 10 == 0 && x != 0) {
+        if (x < 0) {
             return false;
         }
 
         int revertNbr = 0;
-        while (x > revertNbr) {
+        int x_cp = x;
+        while (x > 0) {
             revertNbr = revertNbr * 10 + x % 10;
             x /= 10;
         }
-        return x == revertNbr;
+        return x_cp == revertNbr;
     }
 }
