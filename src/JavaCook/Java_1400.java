@@ -2,10 +2,10 @@ package JavaCook;
 
 /**
  * @author ArtistS
- * @tag
- * @prb
- * Time complexity:
- * Space complexity:
+ * @tag CharArray
+ * @prb https://leetcode.com/problems/construct-k-palindrome-strings/description/
+ * Time complexity: O(n)
+ * Space complexity: O(1)
  */
 public class Java_1400 {
     public boolean canConstruct(String s, int k) {
