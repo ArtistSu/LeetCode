@@ -10,33 +10,35 @@ import java.util.Stack;
  * Space complexity: O(n)
  */
 public class Java_2116 {
-    public boolean canBeValid(String s, String locked) {
-        int len = s.length();
-        if(len % 2 == 1){
+    public boolean canBeValid(String parentheses, String status) {
+        if (parentheses.length() % 2 == 1) {
             return false;
         }
-        Stack<Integer> openBrackets = new Stack<>();
-        Stack<Integer> unlocked = new Stack<>();
-        for(int i =0; i < len;i++){
-            if(locked.charAt(i) == '0'){
-                unlocked.push(i);
-            }else if(s.charAt(i) == '('){
-                openBrackets.push(i);
-            }else if(s.charAt(i) == ')'){
-                if(!openBrackets.empty()){
-                    openBrackets.pop();
-                }else if(!unlocked.empty()){
-                    unlocked.pop();
-                }else{
+        Stack<Integer> open = new Stack<>();
+        Stack<Integer> close = new Stack<>();
+
+        for (int i = 0; i < parentheses.length(); i++) {
+            char ch = parentheses.charAt(i);
+            char ch_sta = status.charAt(i);
+            if (ch_sta == '0') {
+                close.push(i);
+            } else if (ch == '(') {
+                open.push(i);
+            } else if (ch == ')') {
+                if (!open.isEmpty()) {
+                    open.pop();
+                } else if (!close.isEmpty()) {
+                    close.pop();
+                } else {
                     return false;
                 }
             }
         }
-
-        while(!openBrackets.empty() && !unlocked.empty() && openBrackets.peek() < unlocked.peek()){
-            openBrackets.pop();
-            unlocked.pop();
+        while (!open.isEmpty() && !close.isEmpty() && open.peek() < close.peek()) {
+            open.pop();
+            close.pop();
         }
-        return !openBrackets.empty() == false ? true : false;
+        return open.isEmpty() ? true : false;
+
     }
 }
