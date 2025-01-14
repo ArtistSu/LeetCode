@@ -1,7 +1,8 @@
 package JavaCode;
 
+import JavaCook.TreeNode;
+
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Interview04_06 {
 

@@ -1,8 +1,8 @@
 package JavaCode;
 
-import java.util.Deque;
+import JavaCook.TreeNode;
+
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Java1302 {
 

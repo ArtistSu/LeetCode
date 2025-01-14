@@ -1,6 +1,6 @@
 package JavaCode;
 
-import java.util.*;
+import JavaCook.TreeNode;
 
 public class Java124 {
     int maxSum = Integer.MIN_VALUE;

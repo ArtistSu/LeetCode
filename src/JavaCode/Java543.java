@@ -1,5 +1,7 @@
 package JavaCode;
 
+import JavaCook.TreeNode;
+
 public class Java543 {
     int res;
 

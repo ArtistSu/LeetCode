@@ -1,9 +1,6 @@
 package JavaCode;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import JavaCook.TreeNode;
 
 public class Java236 {
     private TreeNode ans;

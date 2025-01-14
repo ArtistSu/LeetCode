@@ -1,7 +1,6 @@
 package JavaCode;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import JavaCook.TreeNode;
 
 public class Java98 {
     /**

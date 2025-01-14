@@ -1,5 +1,7 @@
 package JavaCode;
 
+import JavaCook.TreeNode;
+
 public class Java654 {
     /**
      * Time Complexity: O(n^2) {@param n} is the length of {@param nums}

@@ -1,5 +1,7 @@
 package JavaCode;
 
+import JavaCook.TreeNode;
+
 import java.util.LinkedList;
 
 public class Java965 {

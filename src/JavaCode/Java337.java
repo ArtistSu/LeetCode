@@ -1,5 +1,7 @@
 package JavaCode;
 
+import JavaCook.TreeNode;
+
 public class Java337 {
     /**
      * Time Complexity: O(n) {@param n} is the number of nodes in {@params root}

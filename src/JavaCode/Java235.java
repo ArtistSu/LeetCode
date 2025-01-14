@@ -1,5 +1,7 @@
 package JavaCode;
 
+import JavaCook.TreeNode;
+
 public class Java235 {
     /**
      * Time Complexity: O(n)
