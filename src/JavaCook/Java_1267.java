@@ -1,13 +1,11 @@
 package JavaCook;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * @author ArtistS
- * @tag
- * @prb Time complexity:
- * Space complexity:
+ * @tag Array Matrix
+ * @prb https://leetcode.com/problems/count-servers-that-communicate/description/
+ * Time complexity: O(m * n)
+ * Space complexity: O(m * n)
  */
 public class Java_1267 {
     public int countServers(int[][] grid) {
@@ -34,7 +32,6 @@ public class Java_1267 {
                 }
             }
         }
-
         return res;
     }
 }
