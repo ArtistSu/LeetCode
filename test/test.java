@@ -1,39 +1,66 @@
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 
 public class test {
-    private static final int MOD = 1_000_000_007;
+    class Solution {
+        public int[] countMentions(int numberOfUsers, List<List<String>> events) {
+            int[] mentions = new int[numberOfUsers];
+            int[] offTime = new int[numberOfUsers];
 
-    public static int sumOfMaxMin(int[] nums, int k) {
-        Arrays.sort(nums);
-        int n = nums.length;
+            Collections.sort(events, (a, b) -> Integer.parseInt(a.get(1)) == Integer.parseInt(b.get(1)) ? b.get(0).compareTo(a.get(0)) : Integer.parseInt(a.get(1)) - Integer.parseInt(b.get(1))
+            );
 
-        // Precompute powers of 2 modulo MOD
-        long[] power = new long[n];
-        power[0] = 1;
-        for (int i = 1; i < n; i++) {
-            power[i] = (power[i - 1] * 2) % MOD;
+            for (int i = 0; i < events.size(); i++) {
+                if (events.get(i).get(0).equals("MESSAGE")) {
+                    messageFunc(events.get(i), mentions, offTime);
+                } else if (events.get(i).get(0).equals("OFFLINE")) {
+                    offlineFunc(events.get(i), mentions, offTime);
+                }
+            }
+
+            return mentions;
         }
 
-        long result = 0;
+        void messageFunc(List<String> event, int[] mentions, int[] offTime) {
+            int time = Integer.parseInt(event.get(1));
+            String[] str = event.get(2).split(" ");
 
-        // Iterate and compute max and min contributions
-        for (int i = 0; i < n; i++) {
-            long maxContrib = power[i];
-            long minContrib = power[n - i - 1];
-
-            // Update result using nums[i] as both max and min in subsequences
-            result = (result + nums[i] * (maxContrib - minContrib + MOD)) % MOD;
+            for (String s : str) {
+                if (s.equals("ALL")) {
+                    for (int i = 0; i < mentions.length; i++) {
+                        mentions[i] += 1;
+                    }
+                } else if (s.equals("HERE")) {
+                    for (int i = 0; i < mentions.length; i++) {
+                        if (offTime[i] == 0) { //Only online
+                            mentions[i] += 1;
+                        } else if (offTime[i] + 60 <= time) {
+                            mentions[i] += 1;
+                            offTime[i] = 0;
+                        }
+                    }
+                } else {
+                    int idx = Integer.parseInt(s.substring("id".length()));
+                    mentions[idx] += 1;
+                }
+            }
         }
 
-        return (int) result;
+        void offlineFunc(List<String> event, int[] mentions, int[] offTime) {
+            int time = Integer.parseInt(event.get(1));
+            String[] str = event.get(2).split(" ");
+
+            for (String s : str) {
+                int idx = Integer.parseInt(s);
+                offTime[idx] = time;
+            }
+        }
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
-        int k = 2;
-        System.out.println(sumOfMaxMin(nums, k)); // Expected output: 24
+
     }
 
 
