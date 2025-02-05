@@ -9,27 +9,24 @@ package JavaCook;
  */
 public class Java_88 {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if(nums2.length == 0){
-            return ;
+        if (nums2.length == 0) {
+            return;
         }
 
-        int pointA = m-1;
-        int pointB = n-1;
-        int point = m+n-1;
-        while( pointA >= 0 && pointB >= 0){
-            if(nums2[pointB] > nums1[pointA]){
-                nums1[point--] = nums2[pointB--];
-            }else{
-                nums1[point--] = nums1[pointA--];
+        int idx_1 = m - 1;
+        int idx_2 = n - 1;
+        int curr_idx = m + n - 1;
+
+        while (idx_1 >= 0 && idx_2 >= 0) {
+            if (nums2[idx_2] >= nums1[idx_1]) {
+                nums1[curr_idx--] = nums2[idx_2--];
+            } else if (nums2[idx_2] < nums1[idx_1]) {
+                nums1[curr_idx--] = nums1[idx_1--];
             }
         }
 
-        while(pointA >= 0){
-            nums1[point--] = nums1[pointA--];
-        }
-
-        while(pointB >= 0){
-            nums1[point--] = nums2[pointB--];
+        while (idx_2 >= 0) {
+            nums1[curr_idx--] = nums2[idx_2--];
         }
     }
 }
