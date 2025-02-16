@@ -3,52 +3,48 @@ import java.util.*;
 
 
 public class test {
-    public int[] assignElements(int[] groups, int[] elements) {
-        int[] assigned = new int[groups.length];
-        Arrays.fill(assigned, -1);
+    public long maxWeight(int[] pizzas) {
+        int n = pizzas.length / 4;
 
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        for (int i = 0; i < groups.length; i++) {
-            if (map.containsKey(groups[i])) {
-                map.get(groups[i]).add(i);
-            } else {
-                List<Integer> list = new ArrayList<>();
-                list.add(i);
-                map.put(groups[i], list);
+        Arrays.sort(pizzas);
+
+        int step = 0;
+        int weight = 0;
+        int len = pizzas.length;
+
+        int odd_count = 0;
+        int even_count = 0;
+        for (int i = 1; i <= n; i++) {
+            if(i % 2 != 0){
+                odd_count++;
+            }else{
+                even_count++;
             }
         }
-
-        Map<Integer,Integer> map_ele = new HashMap<>();
-        List<Integer> list_ele = new ArrayList<>();
-        for (int i= 0; i < elements.length; i++) {
-            if (!map_ele.containsKey(elements[i])) {
-                list_ele.add(elements[i]);
-                map_ele.put(elements[i],i);
-            }
+        while (odd_count > 0) {
+            step++;
+            weight+=pizzas[len-step];
+            odd_count--;
         }
 
-        for (int i = 0; i < list_ele.size(); i++) {
-            List<Integer> list = new ArrayList<>();
-
-            for (int key : map.keySet()) {
-                if (key % list_ele.get(i) == 0) {
-                    for (int value : map.get(key)) {
-                        assigned[value] = map_ele.get(list_ele.get(i));
-                    }
-                    list.add(key);
-                }
-            }
-            for (int key : list) {
-                map.remove(key);
-            }
+        while (even_count > 0) {
+            step+=2;
+            weight+=pizzas[len-step];
+            even_count--;
         }
 
-        return assigned;
+
+        return weight;
+
+        // 最大值 次最大值 次次最大值 次次次最大值 次次次次最大值
+        //[1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5]
+
     }
 
     public static void main(String[] args) {
-        new test().assignElements(new int[]{8, 4, 3, 2, 4}, new int[]{4, 2});
-//        new test().assignElements(new int[]{5}, new int[]{6,6,5});
+        int[] pizzas = {5,2,2,4,3,3,1,3,2,5,4,2};
+
+        new test().maxWeight(pizzas);
     }
 
 }

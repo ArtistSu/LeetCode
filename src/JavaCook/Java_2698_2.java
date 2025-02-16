@@ -34,4 +34,8 @@ public class Java_2698_2 {
                 canPartitions(squareNum/100, target-squareNum%100) ||
                 canPartitions(squareNum/1000, target-squareNum%1000);
     }
+
+    public static void main(String[] args) {
+        System.out.println();
+    }
 }
