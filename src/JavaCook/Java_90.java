@@ -4,33 +4,29 @@ import java.util.*;
 
 /**
  * @author ArtistS
- * @tag
- * @prb Time complexity:
- * Space complexity:
+ * @tag Array Backtracking BitManipulation
+ * @prb https://leetcode.com/problems/subsets-ii/description/
+ * Time complexity: O(nlogn + 2^n)
+ * Space complexity: O(n+2^n)
  */
 public class Java_90 {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        List<Integer> numList = new ArrayList<>();
+        Arrays.sort(nums);
+        List<List<Integer>> res = new LinkedList<>();
 
-        result.add(new ArrayList<>()); // empty set
-        subsets(0, nums, numList, result);
-        return result;
+        findAllSubsets(0, nums, new LinkedList<>(), res);
+        return res;
     }
 
-    private void subsets(int offset, int[] nums, List<Integer> numList, List<List<Integer>> result) {
-        if (offset >= nums.length) {
-            return;
+    public void findAllSubsets(int start, int[] nums, List<Integer> tempList, List<List<Integer>> res) {
+        res.add(new ArrayList<>(tempList));
+
+        for (int i = start; i < nums.length; i++) {
+            if (i > start && nums[i] == nums[i - 1]) continue;
+            tempList.add(nums[i]);
+            findAllSubsets(i + 1, nums, tempList, res);
+            tempList.remove(tempList.size() - 1);
         }
-        int val = nums[offset];
-        // pick
-        numList.add(val);
-        subsets(offset + 1, nums, numList, result);
-        // add to result
-        result.add(new ArrayList<>(numList));
-        // not pick
-        numList.remove(numList.size() - 1);
-        subsets(offset + 1, nums, numList, result);
     }
 
     public static void main(String[] args) {
