@@ -1,4 +1,4 @@
-package Algorithm.linkedlist;
+package algorithm.linkedlist;
 
 
 public class FindIntersection_2 {
