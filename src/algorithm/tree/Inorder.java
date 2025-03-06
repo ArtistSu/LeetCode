@@ -1,7 +1,6 @@
 package algorithm.tree;
 
 import algorithm.common.TreeNode;
-
 import java.util.Stack;
 
 public class Inorder {
