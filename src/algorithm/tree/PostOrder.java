@@ -2,6 +2,8 @@ package algorithm.tree;
 
 import algorithm.common.TreeNode;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 public class PostOrder {
@@ -31,6 +33,24 @@ public class PostOrder {
         }
     }
 
+    public static List<Integer> postorderTraversal(TreeNode root) {
+        LinkedList<Integer> result = new LinkedList<>();
+        if (root == null) return result;
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.addFirst(node.val);  // 逆序插入结果
+
+            if (node.left != null) stack.push(node.left);
+            if (node.right != null) stack.push(node.right);
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         root.right = new TreeNode(2);
@@ -40,5 +60,9 @@ public class PostOrder {
         System.out.println("");
         System.out.println("UnRecur");
         postOrderUnRecur(root);
+        System.out.println("");
+        System.out.println("Traversal");
+        List<Integer> res = postorderTraversal(root);
+        res.stream().forEach(x -> System.out.print(x + " "));
     }
 }
