@@ -42,7 +42,7 @@ public class PostOrder {
 
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
-            result.addFirst(node.val);  // 逆序插入结果
+            result.addFirst(node.val);
 
             if (node.left != null) stack.push(node.left);
             if (node.right != null) stack.push(node.right);
