@@ -1,6 +1,8 @@
 package algorithm.linkedlist;
 
 
+import algorithm.common.Node;
+
 public class FindIntersection_2 {
     public Node noLoop(Node head1, Node head2) {
         if (head1 == null || head2 == null) return null;

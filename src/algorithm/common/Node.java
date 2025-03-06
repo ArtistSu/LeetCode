@@ -1,9 +1,9 @@
-package algorithm.linkedlist;
+package algorithm.common;
 
 
 public class Node {
-    int val;
-    Node next;
+    public int val;
+    public Node next;
 
     Node() {
     }
