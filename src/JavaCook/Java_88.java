@@ -2,7 +2,7 @@ package JavaCook;
 
 /**
  * @author ArtistS
- * Time complexity: O(n)
+ * Time complexity: O(m + n)
  * Space complexity: O(1)
  * @tag BruteForce
  * @prb https://leetcode.com/problems/merge-sorted-array/description/
