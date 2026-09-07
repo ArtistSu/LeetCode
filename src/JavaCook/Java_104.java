@@ -8,6 +8,9 @@ package JavaCook;
  * Space complexity: O(1)
  */
 public class Java_104{
+    /**
+     * You can mention there is a StackOverflowError risk here, If the tree is very deep.
+     */
     public int maxDepth(TreeNode root) {
         if(root == null){
             return 0;
