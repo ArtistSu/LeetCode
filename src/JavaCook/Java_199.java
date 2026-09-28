@@ -79,4 +79,23 @@ public class Java_199 {
         return res;
     }
 
+    public List<Integer> rightSideView_google_l5_2(TreeNode root) {
+        if (root == null) return Collections.emptyList();
+
+        List<Integer> res = new ArrayList<>();
+        dfs(root,0,res);
+
+        return res;
+    }
+
+    public void dfs(TreeNode node, int depth,List<Integer> res){
+        if (node == null) return;
+
+        if(depth == res.size()) res.add(node.val);
+
+        dfs(node.right, depth + 1, res);
+        dfs(node.left, depth + 1, res);
+
+    }
+
 }
