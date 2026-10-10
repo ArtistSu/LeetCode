@@ -8,11 +8,11 @@ package JavaCook;
  * Space complexity: O(1)
  */
 public class Java_136 {
-    public int singleNumber(int[] nums) {
-        int xor = 0;
-        for (int num : nums) {
-            xor ^= num;
+    public int singleNumber_google_l4(int[] nums) {
+        int res = 0;
+        for(int num : nums){
+            res = res ^ num;
         }
-        return xor;
+        return res;
     }
 }
