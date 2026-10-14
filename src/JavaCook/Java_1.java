@@ -12,19 +12,19 @@ import java.util.Map;
  * Space complexity: O(N)
  */
 public class Java_1{
-    public int[] twoSum(int[] nums, int target) {
+    /**
+     * Time complexity: O(N)
+     * Space complexity: O(N)
+     */
+    public int[] twoSum_google_l4(int[] nums, int target) {
         Map<Integer,Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if(map.containsKey(target - nums[i])){
-                int[] res = new int[2];
-                res[0] = i;
-                res[1] = map.get(target - nums[i]);
-                Arrays.sort(res);
-                return res;
-            }else{
-                map.put(nums[i],i);
-            }
+
+        for(int i = 0; i < nums.length;i++){
+            int gap = target - nums[i];
+            if(map.containsKey(gap)) return new int[]{map.get(gap),i};
+            map.put(nums[i],i);
         }
-        return new int[] {};
+
+        return new int[0];
     }
 }
