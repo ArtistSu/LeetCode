@@ -11,25 +11,30 @@ import java.util.Set;
  * Space complexity: O(1)
  */
 public class Java_202{
+    /**
+     * Time complexity:O(log(N))
+     * Space complexity: O(1)
+     */
     public boolean isHappy(int n) {
-        Set<Integer> visit = new HashSet<>();
+        int slow = n;
+        int fast = getNext(n);
 
-        while (!visit.contains(n)) {
-            visit.add(n);
-            n = getSquare(n);
-            if (n == 1) {
-                return true;
-            }
+        while(fast != 1 && slow != fast){
+            slow = getNext(slow);
+            fast = getNext(getNext(fast));
         }
-        return false;
+
+        return fast == 1;
     }
 
-    public int getSquare(int n) {
-        int res = 0;
-        while (n > 0) {
-            res += Math.pow(n % 10, 2);
+    // Due to here will cost O(log(N)), even it trigger multiple times, it will still rapidly converge to a very small constant range
+    public int getNext(int n){
+        int sum = 0;
+        while( n > 0){
+            int digit = n % 10;
             n /= 10;
+            sum += digit * digit;
         }
-        return res;
+        return sum;
     }
 }
