@@ -7,37 +7,37 @@ import java.util.List;
 /**
  * @author ArtistS
  * @tag String
- * @prb https://leetcode.com/problems/zigzag-conversion/description/
- * Time complexity: O(n)
- * Space complexity: O(1)
+ * @prb https://leetcode.com/problems/zigzag-conversion/description/ Time complexity: O(n) Space complexity: O(1)
  */
 public class Java_6 {
-    public String convert(String s, int numRows) {
-        if (numRows == 1 || s.length() <= numRows) {
-            return s;
-        }
-
-        // 1 -> top to bottom -1 -> bottom to top
-        int idx = 0, direction = 1;
-        List<Character>[] rows = new ArrayList[numRows];
-        for (int i = 0; i < numRows; i++) {
-            rows[i] = new ArrayList<>();
-        }
-
-        for (char c : s.toCharArray()) {
-            rows[idx].add(c);
-            if (idx == 0) {
-                direction = 1;
-            } else if (idx == numRows - 1) {
-                direction = -1;
-            }
-            idx += direction;
-        }
-
+    /**
+     * Time complexity: O(N) N is the length of String s
+     * Space complexity: O(1)
+     */
+    public String convert_google_l4(String s, int numRows) {
+        if (numRows == 1 || numRows >= s.length()) return s;
+        int n = s.length();
+        char[] characters = s.toCharArray();
         StringBuilder sb = new StringBuilder();
-        for (List<Character> row : rows) {
-            for (char ch : row) {
-                sb.append(ch);
+        int cycleLen = 2 * numRows - 2;
+
+        for (int i = 0; i < numRows; i++) {
+            int currIdx = i;
+            if (i == 0 || i == (numRows - 1)) {
+                while (currIdx < n) {
+                    sb.append(characters[currIdx]);
+                    currIdx += cycleLen ;
+                }
+            } else {
+                boolean isEvenStep = true;
+                int step1 = 2 * (numRows - i - 1);
+                int step2 = 2 * i;
+
+                while (currIdx < n) {
+                    sb.append(characters[currIdx]);
+                    currIdx += isEvenStep ? step1 : step2;
+                    isEvenStep = !isEvenStep;
+                }
             }
         }
         return sb.toString();

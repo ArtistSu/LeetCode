@@ -8,22 +8,21 @@ package JavaCook;
  * Space complexity:
  */
 public class Java_141{
+    /**
+     * Time complexity: O(N) N is the number of the node
+     * Space complexity: O(1)
+     */
     public boolean hasCycle(ListNode head) {
-        if(head == null){
-            return false;
+        if(head == null) return false;
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast) return true;
         }
-
-        ListNode pointer = head;
-        ListNode pointer_2 = head;
-
-        while(pointer_2 != null && pointer_2.next != null){
-            pointer = pointer.next;
-            pointer_2 = pointer_2.next.next;
-            if(pointer == pointer_2){
-                return true;
-            }
-        }
-
         return false;
     }
 }
