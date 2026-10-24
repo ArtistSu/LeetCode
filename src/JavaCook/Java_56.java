@@ -17,7 +17,7 @@ public class Java_56 {
      * @TimeComplexity O(N * log ( N)) N is the length of Array intervals
      * @SpaceComplexity O(1) auxiliary space (excluding the output list)
      */
-    public int[][] merge(int[][] intervals) {
+    public int[][] merge_googl4_l4(int[][] intervals) {
         if (intervals == null || intervals.length == 0 || intervals[0].length == 0) {
             return new int[][]{};
         }

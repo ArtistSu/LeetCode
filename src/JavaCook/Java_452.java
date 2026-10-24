@@ -1,6 +1,8 @@
 package JavaCook;
 
 import java.util.Arrays;
+import java.util.Comparator;
+
 
 /**
  * @author ArtistS
@@ -14,10 +16,10 @@ public class Java_452{
      * @TimeComplexity O(N * log(N))
      * @SpaceComplexity O(N)) -> Java Arrays.sort() will use timsort which will take O(N)
      */
-    public int findMinArrowShots(int[][] points) {
+    public int findMinArrowShots_google_l4(int[][] points) {
         if(points.length == 1) return 1;
 
-        Arrays.sort(points,(a, b)->Integer.compare(a[1],b[1]));
+        Arrays.sort(points, Comparator.comparingInt(a -> a[1]));
         int res = 1, prevEnd = points[0][1];
 
         for(int i = 1;i < points.length; i++){
@@ -28,4 +30,6 @@ public class Java_452{
         }
         return res;
     }
+
+
 }

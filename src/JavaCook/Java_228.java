@@ -16,7 +16,7 @@ public class Java_228 {
      * Time complexity: O(N) where N is the length of Array nums
      * Space complexity: O(1) auxiliary space (excluding the output list)
      */
-    public List<String> summaryRanges(int[] nums) {
+    public List<String> summaryRanges_google_l4(int[] nums) {
         if (nums == null || nums.length == 0) {
             return new ArrayList<>();
         }
