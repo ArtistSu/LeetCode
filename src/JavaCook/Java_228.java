@@ -1,5 +1,6 @@
 package JavaCook;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,23 +12,30 @@ import java.util.List;
  * Space complexity: O(1)
  */
 public class Java_228 {
+    /**
+     * Time complexity: O(N) where N is the length of Array nums
+     * Space complexity: O(1) auxiliary space (excluding the output list)
+     */
     public List<String> summaryRanges(int[] nums) {
-        List<String> res = new LinkedList<>();
-
-        if (nums.length == 0) {
-            return res;
+        if (nums == null || nums.length == 0) {
+            return new ArrayList<>();
         }
 
-        int start = nums[0];
-        StringBuilder partRes = new StringBuilder();
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[i - 1] + 1) {
-                res.add(start == nums[i - 1] ? partRes.append(start).toString() : partRes.append(start).append("->").append(nums[i - 1]).toString());
-                start = nums[i];
+        List<String> result = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int start = i;
+            while (i + 1 < nums.length && nums[i] + 1 == nums[i + 1]) {
+                i++;
             }
-            partRes.setLength(0);
+
+            if (start == i) {
+                result.add(String.valueOf(nums[start]));
+            } else {
+                result.add(nums[start] + "->" + nums[i]);
+            }
         }
-        res.add(start == nums[nums.length - 1] ? partRes.append(start).toString() : partRes.append(start).append("->").append(nums[nums.length - 1]).toString());
-        return res;
+
+        return result;
     }
 }
