@@ -1,34 +1,37 @@
 package JavaCook;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author ArtistS
  * @tag stack
  * @prb https://leetcode.com/problems/valid-parentheses/description/
  * Time complexity: O(n)
- * Space complexity: O(1)
+ * Space complexity: O(n)
  */
 public class Java_20 {
-    public boolean isValid(String s) {
-        LinkedList<Character> stack = new LinkedList();
-        Map<Character,Character> map = new HashMap<>();
-        map.put('(',')');
-        map.put('[',']');
-        map.put('{','}');
+    /**
+     * Time complexity: O(N) N is the length of String s
+     * Space complexity: O(N)
+     */
+    public boolean isValid_google_l4(String s) {
+        if(s == null) return false;
 
-        char[] chars = s.toCharArray();
-        for(char ch : chars){
-            if(map.containsKey(ch)){
-                stack.addFirst(ch);
-            }else if(!stack.isEmpty() && map.get(stack.peek())==ch){
-                stack.pop();
+        Deque<Character> stack = new ArrayDeque<>();
+
+        for(char ch : s.toCharArray()){
+            if(ch == '('){
+                stack.push(')');
+            }else if (ch == '['){
+                stack.push(']');
+            }else if(ch == '{'){
+                stack.push('}');
             }else{
-                return false;
+                if(stack.isEmpty() || stack.pop() != ch){
+                    return false;
+                }
             }
         }
-        return stack.isEmpty()?true:false;
+        return stack.isEmpty();
     }
 }
