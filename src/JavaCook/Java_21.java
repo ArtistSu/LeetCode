@@ -4,27 +4,33 @@ package JavaCook;
  * @author ArtistS
  * @tag ListNode
  * @prb https://leetcode.com/problems/merge-two-sorted-lists/description/
- * Time complexity:O(1)
+ * Time complexity:O(N)
  * Space complexity: O(1)
  */
 public class Java_21 {
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode start = new ListNode();
-        ListNode temp = start;
-        ListNode p1 = list1;
-        ListNode p2 = list2;
-        while (p1 != null && p2 != null) {
-            if (p1.val <= p2.val) {
-                temp.next = p1;
-                temp = p1;
-                p1 = p1.next;
-            } else {
-                temp.next = p2;
-                temp = p2;
-                p2 = p2.next;
+    /**
+     * Time complexity:O(M+N) M is the number of nodes in list1, and N is the number of nodes in list2.
+     * Space complexity: O(1)
+     */
+    public ListNode mergeTwoLists_google_l4(ListNode list1, ListNode list2) {
+        if(list1 == null) return list2;
+        if(list2 == null) return list1;
+
+        ListNode dummyHead = new ListNode(0);
+        ListNode curr = dummyHead;
+
+        while(list1 != null && list2 != null){
+            if(list1.val <= list2.val){
+                curr.next = list1;
+                list1 = list1.next;
+            }else{
+                curr.next = list2;
+                list2 = list2.next;
             }
+            curr = curr.next;
         }
-        temp.next = (p1 != null) ? p1 : p2;
-        return start.next;
+
+        curr.next = list1 == null ? list2 : list1;
+        return dummyHead.next;
     }
 }
