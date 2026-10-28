@@ -8,13 +8,17 @@ package JavaCook;
  * Space complexity: O(h) h is the height of teh tree
  */
 public class Java_112 {
-    public boolean hasPathSum(TreeNode root, int targetSum) {
+    /**
+     * Time complexity: O(N) N is the number of nodes in Tree root
+     * Space complexity: O(H) H is the height of the Tree root
+     */
+    public boolean hasPathSum_google_l4(TreeNode root, int targetSum) {
         if (root == null) {
             return false;
         }
         if (root.left == null && root.right == null) {
             return targetSum == root.val;
         }
-        return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
+        return hasPathSum_google_l4(root.left, targetSum - root.val) || hasPathSum_google_l4(root.right, targetSum - root.val);
     }
 }
