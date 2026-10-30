@@ -12,7 +12,7 @@ public class Java_86 {
      * @TimeComplexity O(N) N is the number of nodes in ListNode head
      * @SpaceComplexity O(1)
      */
-    public ListNode partition(ListNode head, int x) {
+    public ListNode partition_google_l4(ListNode head, int x) {
         ListNode smallDummy = new ListNode(0);
         ListNode largeDummy = new ListNode(0);
 

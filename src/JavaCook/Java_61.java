@@ -12,7 +12,7 @@ public class Java_61{
      * @TimeComplexity O(N) N is the number of nodes in ListNode head
      * @SpaceComplexity O(1)
      */
-    public ListNode rotateRight(ListNode head, int k) {
+    public ListNode rotateRight_google_l4(ListNode head, int k) {
         if(head == null || head.next == null || k == 0 ) return head;
 
         // Handle k > the number of nodes in ListNode head

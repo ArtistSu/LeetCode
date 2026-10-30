@@ -15,7 +15,7 @@ public class Java_146 {
      * @TimeComplexity O(1)
      * @SpaceComplexity O(capacity)
      */
-    class LRUCache {
+    class LRUCache_google_l4 {
 
         // Define doubly linkedlist
         class Node {
@@ -38,7 +38,7 @@ public class Java_146 {
         private final Node head;
         private final Node tail;
 
-        public LRUCache(int capacity) {
+        public LRUCache_google_l4(int capacity) {
             this.capacity = capacity;
             cache = new HashMap<>();
             head = new Node();
