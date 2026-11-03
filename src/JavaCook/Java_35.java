@@ -3,23 +3,29 @@ package JavaCook;
 /**
  * @author ArtistS
  * @tag BruteForce
- * @prb https://leetcode.com/problems/search-insert-position/description/
- * Time complexity:O(n)
- * Space complexity: O(1)
+ * @prb https://leetcode.com/problems/search-insert-position/description/ Time complexity:O(n) Space complexity: O(1)
  */
 public class Java_35 {
+    /**
+     * Time complexity:O(log(N)) N is the length of Array nums
+     * Space complexity: O(1)
+     */
     public int searchInsert(int[] nums, int target) {
-        if (nums[0] > target) {
-            return 0;
-        }
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == target) {
-                return i;
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target) {
+                return mid;
             }
-            if ((nums[i] < target) && (i != nums.length - 1) && (nums[i + 1] > target)) {
-                return i + 1;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
-        return nums.length;
+        return left;
     }
 }

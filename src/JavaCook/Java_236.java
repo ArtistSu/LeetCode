@@ -9,20 +9,19 @@ package JavaCook;
  */
 public class Java_236 {
     /**
-     * Google L4 or L5 you should clear explain why the time complexity is O(N), Space complexity is O(logN)
+     * @TimeComplexity O(N) N is the number of nodes in the tree
+     * @SpaceComplexity O(H)  H is the height of the tree
      */
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestor_google_l4(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null || root == p || root == q) return root;
 
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right =lowestCommonAncestor(root.right, p, q);
+        TreeNode leftNode = lowestCommonAncestor_google_l4(root.left, p , q);
+        TreeNode rightNode = lowestCommonAncestor_google_l4(root.right,p,q);
 
-        if (left != null && right != null) {
+        if(leftNode != null && rightNode != null){
             return root;
         }
-
-        return left != null ? left : right;
+        return leftNode != null ? leftNode : rightNode;
     }
-
 
 }
