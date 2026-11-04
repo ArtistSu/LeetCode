@@ -3,37 +3,6 @@ package JavaCook;
 import java.util.*;
 
 public class Java_199 {
-    public List<Integer> rightSideView(TreeNode root) {
-        if (root == null) return new LinkedList<>();
-
-        Deque<TreeNode> deque = new LinkedList<>();
-        deque.add(root);
-
-        List<Integer> res = new LinkedList<>();
-        int currLevel = 1, nextLevel = 0;
-
-        while (!deque.isEmpty()) {
-            while (currLevel > 0) {
-                TreeNode currNode = deque.pollFirst();
-                if (currLevel == 1) {
-                    res.add(currNode.val);
-                }
-                if (currNode.left != null) {
-                    deque.offer(currNode.left);
-                    nextLevel++;
-                }
-                if (currNode.right != null) {
-                    deque.offer(currNode.right);
-                    nextLevel++;
-                }
-                currLevel--;
-            }
-            currLevel = nextLevel;
-            nextLevel = 0;
-        }
-        return res;
-    }
-
     /**
      * Stage 1: "I can think of two approaches to solve this. First, a BFS approach using a queue to traverse level by
      * level, picking the last element of each level. This takes $O(N)$ time and $O(W)$ space, where $W$ is the max
