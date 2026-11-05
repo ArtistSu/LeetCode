@@ -42,14 +42,19 @@ public class Java_98{
      * @SpaceComplexity O(H) H is the height of the tree
      */
     public boolean isValidBST_google_l4(TreeNode root) {
-        if(root == null) return true;
+        return validate(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
 
-        if(!isValidBST_google_l4(root)){
+    private boolean validate(TreeNode node, long lower, long upper) {
+        if (node == null) {
+            return true;
+        }
+
+        if (node.val <= lower || node.val >= upper) {
             return false;
         }
 
-        if(root.val <= prev) return false;
-
-        return isValidBST_google_l4(root.right);
+        return validate(node.left, lower, node.val) &&
+                validate(node.right, node.val, upper);
     }
 }
