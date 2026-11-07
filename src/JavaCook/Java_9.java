@@ -4,23 +4,23 @@ package JavaCook;
  * @author ArtistS
  * @tag CharacterComparison
  * @prb https://leetcode.com/problems/palindrome-number/description/
- * Time complexity: O(n)
- * Space complexity: O(1)
+ * Time complexity:
+ * Space complexity:
  */
 public class Java_9 {
-    public boolean isPalindrome(int x) {
-        if(x < 0){
-            return false;
+    /**
+     * Time complexity: O(log10(x)) - proportional to the number of digits in x
+     * Space complexity: O(1)
+     */
+    public boolean isPalindrome_google_l4(int x) {
+        if(x < 0 || (x % 10 == 0 && x != 0)) return false;
+
+        int reversedHalf = 0;
+        while(x > reversedHalf){
+            reversedHalf = reversedHalf*10 + x % 10;
+            x /= 10;
         }
 
-        String str = String.valueOf(x);
-        int start = 0;
-        int end = str.length() - 1;
-        while(start < end){
-            if(str.charAt(start++) != str.charAt(end--)){
-                return false;
-            }
-        }
-        return true;
+        return reversedHalf == x || reversedHalf / 10 == x;
     }
 }
