@@ -1,9 +1,6 @@
 package JavaCook;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author ArtistS
@@ -14,44 +11,47 @@ import java.util.Set;
  */
 public class Java_207{
     /**
-     * @TimeComplexity
-     * @SpaceComplexity
+     * @TimeComplexity O(V + E) where V = numCourses, E = prerequisites.length
+     * @SpaceComplexity O(V + E) for the adjacency list and recursion stack
      */
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
-        Map<Integer, Set<Integer>> map = new HashMap<>();
-        Set<Integer> courses = new HashSet<>();
-
-        for(int[] prerequisite : prerequisites){
-            map.computeIfAbsent(prerequisite[0], v -> new HashSet<>()).add(prerequisite[1]);
-            courses.add(prerequisite[0]);
-            courses.add(prerequisite[1]);
+    public boolean canFinish_google_l4(int numCourses, int[][] prerequisites) {
+        // 1. Build an adjacency list
+        List<List<Integer>> adj = new ArrayList<>();
+        for(int i = 0; i < numCourses; i++){
+            adj.add(new ArrayList<Integer>());
+        }
+        for(int[] prerequisite: prerequisites){
+            adj.get(prerequisite[1]).add(prerequisite[0]);
         }
 
-        for(int course : courses){
-            int finish = dfs(course,map, new HashSet<Integer>());
-            numCourses -= finish;
+        // 2. Ste status 0: Unvisited 1: In progress 2: Visited
+        int[] status = new int[numCourses];
 
-            if(numCourses <= 0) return true;
-        }
-
-        return false;
-    }
-
-    private int dfs(int course, Map<Integer,Set<Integer>> map, Set<Integer> visited){
-        if(visited.contains(course)){
-            visited.clear();
-            return 0;
-        }
-
-        visited.add(course);
-
-        for(int dependent: map.get(course)){
-            if(dfs(dependent, map, visited) == 0){
-                visited.clear();
-                break;
+        // 3. Find if have cyclye for every node
+        for(int i = 0; i < numCourses; i++){
+            if(status[i] == 0){
+                if(hasCycle(i,adj,status)){
+                    return false;
+                }
             }
         }
 
-        return visited.size();
+        return true;
+    }
+
+    public boolean hasCycle(int course, List<List<Integer>> adj, int[] status){
+        if(status[course] == 1) return true;
+        if(status[course] == 2) return false;
+
+        status[course] = 1;
+
+        for(int nextCourse : adj.get(course)){
+            if(hasCycle(nextCourse,adj,status)){
+                return true;
+            }
+        }
+        status[course] = 2;
+
+        return false;
     }
 }
