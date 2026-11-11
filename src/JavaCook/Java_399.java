@@ -6,20 +6,14 @@ import java.util.*;
  * @author ArtistS
  * @tag
  * @prb
- * @TimeComplexity O(E+Q(V+E)) -> O(Q(V+E)), E=equations.size(), V=the number of distinct variables in the input, Q=queries.size()
- * @SpaceComplexity O(V+E+Q)
+ * @TimeComplexity
+ * @SpaceComplexity
  */
 public class Java_399 {
-    private static class Edge {
-        String neighbor;
-        double weight;
-
-        private Edge(String neighbor, double weight) {
-            this.neighbor = neighbor;
-            this.weight = weight;
-        }
-    }
-
+    /**
+     * @TimeComplexity O(E+Q(V+E)) -> O(Q(V+E)), E=equations.size(), V=the number of distinct variables in the input, Q=queries.size()
+     * @SpaceComplexity O(V+E+Q)
+     */
     public double[] calcEquation_google_l4(List<List<String>> equations, double[] values, List<List<String>> queries) {
         Map<String, List<Edge>> graph = new HashMap<>();
 
@@ -64,4 +58,6 @@ public class Java_399 {
         }
         return -1.0;
     }
+
+    private record Edge(String neighbor, double weight) {}
 }
